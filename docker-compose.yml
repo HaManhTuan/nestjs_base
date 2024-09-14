@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  mysql:
+    platform: linux/x86_64
+    image: mysql:8.0.26
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123qwe
+      MYSQL_DATABASE: nestjsbase
+    ports:
+      - 3306:3306
+    volumes:
+      - './mysqldata:/var/lib/mysql'
+    networks:
+      - mysql_nestjs
+
+networks:
+    mysql_nestjs:
+        driver: bridge
